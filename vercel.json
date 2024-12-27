@@ -3,10 +3,8 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
+      "use": "@vercel/node",
+      "config": { "maxLambdaSize": "15mb" }
     }
   ],
   "routes": [
@@ -14,5 +12,6 @@
       "src": "/(.*)",
       "dest": "/"
     }
-  ]
+  ],
+  "buildCommand": "node ./node_modules/vite/bin/vite.js build"
 }
