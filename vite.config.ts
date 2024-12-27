@@ -12,20 +12,16 @@ export default defineConfig({
       '@': '/src'
     }
   },
-  server: {
-    port: 5173,
-    host: true
-  },
   build: {
-    sourcemap: true,
     outDir: 'dist',
+    minify: true,
     rollupOptions: {
       output: {
-        format: 'es'
+        format: 'es',
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom']
+        }
       }
-    },
-    commonjsOptions: {
-      transformMixedEsModules: true
     }
   }
 });
